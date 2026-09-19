@@ -12,7 +12,7 @@ nvm is a version manager for Node.js, implemented as a POSIX-compliant function 
 - **Installation script**: `install.sh` - Handles downloading and installing nvm itself
 - **Execution wrapper**: `nvm-exec` - Allows running commands with specific Node.js versions
 - **Bash completion**: `bash_completion` - Provides tab completion for bash users
-- **Tests**: Comprehensive test suite in `test/` directory using the [urchin](https://www.npmjs.com/package/urchin) test framework
+- **Tests**: Comprehensive test suite in `test/` directory using the [Bats](https://www.npmjs.com/package/bats) test framework
 
 ## Key Files and Their Purposes
 
@@ -163,7 +163,7 @@ Simple wrapper script that:
 ## Running Tests
 
 ### Test Framework
-nvm uses the [urchin](https://www.npmjs.com/package/urchin) test framework for shell script testing.
+nvm uses the [Bats](https://www.npmjs.com/package/bats) test framework for shell script testing.
 
 ### Test Structure
 ```
@@ -181,7 +181,7 @@ test/
 
 #### Install Dependencies
 ```bash
-npm install  # Installs urchin, semver, and replace tools
+npm install  # Installs bats, semver, and replace tools
 ```
 
 #### Run All Tests
@@ -212,13 +212,13 @@ make SHELLS=bash test            # Only bash shell
 #### Individual Test Execution
 ```bash
 ./test/fast/Unit\ tests/nvm_get_arch     # Run single test (WARNING: This will exit/terminate your current shell session)
-./node_modules/.bin/urchin test/fast/                        # Run fast test suite
-./node_modules/.bin/urchin 'test/fast/Unit tests/nvm_get_arch'  # Run single test safely without shell termination
-./node_modules/.bin/urchin test/slow/                        # Run slow test suite
-./node_modules/.bin/urchin test/sourcing/                    # Run sourcing test suite
-./node_modules/.bin/urchin test/install_script/              # Run install script test suite
-./node_modules/.bin/urchin test/installation_node/           # Run Node installation test suite
-./node_modules/.bin/urchin test/installation_iojs/           # Run io.js installation test suite
+./node_modules/.bin/bats test/fast/                        # Run fast test suite
+./node_modules/.bin/bats 'test/fast/Unit tests/nvm_get_arch'  # Run single test safely without shell termination
+./node_modules/.bin/bats test/slow/                        # Run slow test suite
+./node_modules/.bin/bats test/sourcing/                    # Run sourcing test suite
+./node_modules/.bin/bats test/install_script/              # Run install script test suite
+./node_modules/.bin/bats test/installation_node/           # Run Node installation test suite
+./node_modules/.bin/bats test/installation_iojs/           # Run io.js installation test suite
 ```
 
 #### Linting and Docs Checks

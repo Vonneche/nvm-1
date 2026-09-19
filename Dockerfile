@@ -103,7 +103,7 @@ RUN echo '[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" # Th
 
 # nodejs and tools
 RUN nvm install node
-RUN npm install -g doctoc urchin eclint dockerfile_lint
+RUN npm install -g doctoc bats eclint dockerfile_lint
 RUN npm install --prefix "$HOME/.nvm/"
 
 # Set WORKDIR to nvm directory

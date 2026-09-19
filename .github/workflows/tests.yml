@@ -1,4 +1,4 @@
-name: urchin tests
+name: Bats tests
 
 on: [push, pull_request]
 
@@ -66,14 +66,14 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
-      - run: npm ls urchin
-      - run: npx which urchin
+      - run: npm ls bats
+      - run: npx which bats
       - run: env
       - name: Run tests
         shell: bash
         run: |
           for attempt in 1 2 3; do
-            timeout 600 make TERM=xterm-256color TEST_SUITE="${{ matrix.suite }}" SHELL="${{ matrix.shell }}" URCHIN="$(npx which urchin)" test-${{ matrix.shell }} && exit 0
+            timeout 600 make TERM=xterm-256color TEST_SUITE="${{ matrix.suite }}" SHELL="${{ matrix.shell }}" BATS="$(npx which bats)" test-${{ matrix.shell }} && exit 0
             EXIT_CODE=$?
             if [ $EXIT_CODE -ne 124 ]; then
               exit $EXIT_CODE

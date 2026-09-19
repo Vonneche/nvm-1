@@ -77,8 +77,8 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
-      - run: npm ls urchin
-      - run: npx which urchin
+      - run: npm ls bats
+      - run: npx which bats
       - run: env
       - name: Hide system node
         run: |
@@ -88,7 +88,7 @@ jobs:
         shell: bash
       - name: Run fast tests
         run: |
-          URCHIN_PATH="$(npx which urchin)"
+          BATS_PATH="$(npx which bats)"
           unset NVM_CD_FLAGS NVM_BIN NVM_INC
           export NVM_DIR="${{ github.workspace }}"
           export PATH="$(echo "$PATH" | tr ':' '\n' | grep -v '\.nvm' | grep -v 'toolcache' | tr '\n' ':')"

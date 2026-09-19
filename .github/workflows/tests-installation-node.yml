@@ -61,8 +61,8 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
-      - run: npm ls urchin
-      - run: npx which urchin
+      - run: npm ls bats
+      - run: npx which bats
       - name: Run installation_node tests in container
         run: |
           # Retry the image pull to tolerate transient Docker registry failures
@@ -100,15 +100,15 @@ jobs:
                 apt-get install -y $TEST_SHELL || true
               fi
 
-              # Use nvm to install Node.js for running urchin
+              # Use nvm to install Node.js for running bats
               # Node 16 is the last version supporting GLIBC 2.23 (Ubuntu 16.04)
               export NVM_DIR="/workspace"
               . /workspace/nvm.sh
               nvm install 16
               nvm use 16
 
-              npm ls urchin
-              URCHIN_PATH="$(npx which urchin)"
+              npm ls bats
+              BATS_PATH="$(npx which bats)"
 
               # Remove curl if testing without it
               if [ "$WITHOUT_CURL" = "true" ]; then

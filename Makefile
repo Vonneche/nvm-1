@@ -1,16 +1,14 @@
 	# Since we rely on paths relative to the makefile location, abort if make isn't being run from there.
 $(if $(findstring /,$(MAKEFILE_LIST)),$(error Please only invoke this makefile from the directory it resides in))
-	# Note: With Travis CI:
-	#  - the path to urchin is passed via the command line.
-	#  - the other utilities are NOT needed, so we skip the test for their existence.
-URCHIN := urchin
-ifeq ($(findstring /,$(URCHIN)),) # urchin path was NOT passed in.
+	# Add the local npm packages' bin folder to the PATH, so that `make` can find them.
+BATS := bats
+ifeq ($(findstring /,$(BATS)),) # bats path was NOT passed in.
 		# Add the local npm packages' bin folder to the PATH, so that `make` can find them, when invoked directly.
 		# Note that rather than using `$(npm bin)` the 'node_modules/.bin' path component is hard-coded, so that invocation works even from an environment
 		# where npm is (temporarily) unavailable due to having deactivated an nvm instance loaded into the calling shell in order to avoid interference with tests.
 	export PATH := $(shell printf '%s' "$$PWD/node_modules/.bin:$$PATH")
 		# The list of all supporting utilities, installed with `npm install`.
-	UTILS := $(URCHIN) replace semver
+	UTILS := $(BATS) replace semver
 		# Make sure that all required utilities can be located.
 	UTIL_CHECK := $(or $(shell PATH="$(PATH)" which $(UTILS) >/dev/null && echo 'ok'),$(error Did you forget to run `npm install` after cloning the repo? At least one of the required supporting utilities not found: $(UTILS)))
 endif
@@ -46,7 +44,7 @@ $(SHELL_TARGETS):
 	[ -z "$$TRAVIS_BUILD_DIR" ] && [ -z "$$GITHUB_ACTIONS" ] && for v in $$(set | awk -F'=' '$$1 ~ "^NVM_" { print $$1 }'); do unset $$v; done && unset v; \
 	for suite in $(TEST_SUITE); do \
 		echo "Running test suite: $$suite"; \
-		$(URCHIN) -f -s $$shell test/$$suite || exit; \
+		TEST_SHELL="$$shell" TEST_SUITE="$$suite" $(BATS) test/bats/legacy.bats || exit; \
 	done
 
 # All-tests target: invokes the specified test suites for ALL shells defined in $(SHELLS).

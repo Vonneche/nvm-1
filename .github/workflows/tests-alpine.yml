@@ -65,7 +65,7 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
-      - run: npm ls urchin
+      - run: npm ls bats
       - name: 'Run fast tests on Alpine ${{ matrix.alpine }} (${{ matrix.arch }})'
         run: |
           for i in 1 2 3 4 5; do
@@ -101,7 +101,7 @@ jobs:
               chmod 0440 /etc/sudoers.d/tester
               export NVM_DIR=/workspace HOME=/home/tester
               unset NVM_BIN NVM_INC NVM_CD_FLAGS
-              su-exec tester script -q -e -c "make TEST_SUITE=fast SHELL=$TEST_SHELL URCHIN=/workspace/node_modules/.bin/urchin test-$TEST_SHELL" /dev/null
+              su-exec tester script -q -e -c "make TEST_SUITE=fast SHELL=$TEST_SHELL BATS=/workspace/node_modules/.bin/bats test-$TEST_SHELL" /dev/null
             '
 
   musl-binary:
