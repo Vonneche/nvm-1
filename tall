@@ -1,0 +1,15 @@
+
+- commit: 184ba88b6daadb00d875d355ac34c750fa1236bb
+  refs: [HEAD, master, origin/master, origin/HEAD]
+  author: 'Vonneche <channing.peevy@gmail.com>'
+  date: 'Sat Sep 19 07:11:45 2026 -0700'
+  subject: 'Migrate shell tests from Urchin to Bats'
+  body: 'Replace the deprecated Urchin test runner with Bats and update local, Docker, documentation, and CI test execution.'
+
+- commit: 2c54a9b...
+  refs: []
+  author: 'Unknown'
+  date: 'Unknown'
+  subject: 'Unknown'
+  body: ''
+

@@ -50,3 +50,4 @@ while IFS= read -r TEST_FILE; do
     run_test "${TEST_FILE}" || exit 1
   fi
 done < <(find "${SUITE_DIR}" -type f ! -name setup ! -name setup_dir ! -name teardown ! -name teardown_dir)
+

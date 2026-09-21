@@ -1,0 +1,15 @@
+[33m184ba88[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Migrate shell tests from Urchin to Bats
+ .github/workflows/tests-alpine.yml            |  4 [32m+[m[31m--[m
+ .github/workflows/tests-fast.yml              |  6 [32m++[m[31m--[m
+ .github/workflows/tests-installation-iojs.yml |  6 [32m++[m[31m--[m
+ .github/workflows/tests-installation-node.yml | 10 [32m+++[m[31m---[m
+ .github/workflows/tests-xenial.yml            | 10 [32m+++[m[31m---[m
+ .github/workflows/tests.yml                   |  8 [32m++[m[31m---[m
+ AGENTS.md                                     | 20 [32m+++++[m[31m------[m
+ Dockerfile                                    |  2 [32m+[m[31m-[m
+ Makefile                                      | 12 [32m+++[m[31m----[m
+ README.md                                     |  4 [32m+[m[31m--[m
+ package.json                                  |  6 [32m++[m[31m--[m
+ test/bats/legacy-runner                       | 52 [32m+++++++++++++++++++++++++++[m
+ test/bats/legacy.bats                         |  6 [32m++++[m
+ 13 files changed, 101 insertions(+), 45 deletions(-)
