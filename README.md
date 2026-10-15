@@ -546,12 +546,14 @@ The same guidelines mentioned for migrating npm packages in node are applicable 
 
 ### System Version of Node
 
-If you want to use the system-installed version of node, you can use the special default alias "system":
+To switch the current shell to a Node installation available outside nvm, use the special version "system":
 
 ```sh
 nvm use system
-nvm run system --version
+node --version
 ```
+
+nvm does not copy or manage this installation, and switching to it does not uninstall any nvm-managed versions. `nvm use system` requires a system Node executable to be available on `PATH` after nvm's version paths are removed. To stop using the nvm-managed version in the current shell, run `nvm deactivate`; this restores the shell's prior `PATH` and does not uninstall or otherwise change any Node installation. Manage or remove a system Node installation with the package manager or installer that provided it.
 
 ### Listing Versions
 
